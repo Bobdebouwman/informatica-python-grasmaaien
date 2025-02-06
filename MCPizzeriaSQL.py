@@ -1,6 +1,6 @@
 # Vul hier de naam van je programma in:
 #
-#
+#s
 # Vul hier jullie namen in:
 #
 #
