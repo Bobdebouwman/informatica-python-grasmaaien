@@ -3,20 +3,32 @@
 #
 #
 # Vul hier jullie namen in:
-#
+# timo en thijs
 #
 #
 
 
 ### --------- Bibliotheken en globale variabelen -----------------
 from tkinter import *
-import MCPizzeriaSQL
+import sqlite3
+with sqlite3.connect("MCPizzeria.db") as db:
+ #cursor is object waarmee je data uit de database kan 
+ cursor = db.cursor()
+
 
 
 ### ---------  Functie definities  -----------------
-
+def maakTabellenAan():
+ # Maak een nieuwe tabel met 3 kolommen: id, naam, prijs
+ cursor.execute("""
+ CREATE TABLE IF NOT EXISTS tbl_pizzas(
+ gerechtID INTEGER PRIMARY KEY AUTOINCREMENT,
+ gerechtNaam TEXT NOT NULL,
+ gerechtPrijs REAL NOT NULL);""")
+ print("Tabel 'tbl_pizzas' aangemaakt.")
 
 ### --------- Hoofdprogramma  ---------------
+maakTabellenAan()
 
 venster = Tk()
 venster.iconbitmap("MC_icon.ico") #Let op: Dit werkt niet op een MAC! Zet deze regel dan in commentaar
